@@ -1,13 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class TabSet extends Component {
-  render() {
-    return (
-      <div>
-        {this.props.children}
-      </div>
-    )
-  }
+function TabSet(props) {
+  return (
+    <div>
+      {props.children}
+    </div>
+  )
 }
 
 export default TabSet;

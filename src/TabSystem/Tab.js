@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 
 class Tab extends Component {
   constructor(props) {
@@ -7,19 +7,24 @@ class Tab extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
   handleClick() {
-    console.log('clicked a tab');
+    const tabId = this.props.tabId;
+    this.props.handleTabChange(tabId);
   }
   render() {
+    const selected = this.props.chosenTab;
     return (
       <button
         onClick={this.handleClick}
+        style={{
+          fontWeight: selected ? 'bold' : 'normal'
+        }}
       >{this.props.label}</button>
     )
   }
 }
 
-Tab.PropTypes = {
-  label: PropTypes.string
+Tab.propTypes = {
+  label: propTypes.string
 }
 
 export default Tab;

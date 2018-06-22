@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
+import TabSet from './TabSet';
+import Tab from './Tab';
+import ContentSet from './ContentSet';
 
 export default class TabSystem extends Component {
   constructor(props) {
@@ -7,16 +10,40 @@ export default class TabSystem extends Component {
     this.state = {
       chosenTab: props.initialChosenTab,
     }
+    this.handleTabChange = this.handleTabChange.bind(this);
+  }
+  handleTabChange(newTabId) {
+    this.setState({
+      chosenTab: newTabId
+    })
   }
   render() {
+    const tabs = this.props.tabs;
+    const renderedTabs = tabs.map((tab, index) => {
+      return (
+        <Tab
+          chosenTab={this.state.chosenTab === index}
+          label={tab}
+          tabId={index}
+          handleTabChange={this.handleTabChange}
+          key={index}>
+        </Tab>
+      )
+    });
     return (
       <div>
-        {this.props.children}
+        <TabSet>
+          {renderedTabs}
+        </TabSet>
+        <ContentSet>
+          {this.props.children[this.state.chosenTab]}
+        </ContentSet>
       </div>
     )
   }
 }
 
-TabSystem.PropTypes = {
-  initialChosenTab: PropTypes.number.isRequired
+TabSystem.propTypes = {
+  initialChosenTab: propTypes.number.isRequired,
+  tabs: propTypes.arrayOf(propTypes.string).isRequired,
 }
