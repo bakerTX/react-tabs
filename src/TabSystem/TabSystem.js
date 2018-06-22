@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import TabSet from './TabSet';
-import Tab from './Tab';
 import ContentSet from './ContentSet';
 
 export default class TabSystem extends Component {
@@ -18,23 +17,9 @@ export default class TabSystem extends Component {
     })
   }
   render() {
-    const tabs = this.props.tabs;
-    const renderedTabs = tabs.map((tab, index) => {
-      return (
-        <Tab
-          chosenTab={this.state.chosenTab === index}
-          label={tab}
-          tabId={index}
-          handleTabChange={this.handleTabChange}
-          key={index}>
-        </Tab>
-      )
-    });
     return (
       <div>
-        <TabSet>
-          {renderedTabs}
-        </TabSet>
+        <TabSet tabs={this.props.tabs} chosenTab={this.state.chosenTab} handleTabChange={this.handleTabChange}></TabSet>
         <ContentSet>
           {this.props.children[this.state.chosenTab]}
         </ContentSet>
