@@ -1,5 +1,4 @@
 ## Reusable Tabs Component
----
 
 #### Usage
 
