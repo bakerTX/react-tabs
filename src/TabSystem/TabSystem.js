@@ -7,7 +7,7 @@ export default class TabSystem extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      chosenTab: props.initialChosenTab,
+      chosenTab: props.initialChosenTab || 0,
     }
     this.handleTabChange = this.handleTabChange.bind(this);
   }
@@ -29,6 +29,6 @@ export default class TabSystem extends Component {
 }
 
 TabSystem.propTypes = {
-  initialChosenTab: propTypes.number.isRequired,
+  initialChosenTab: propTypes.number,
   tabNames: propTypes.arrayOf(propTypes.string).isRequired,
 }
