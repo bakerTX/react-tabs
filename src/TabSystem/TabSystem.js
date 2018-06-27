@@ -19,7 +19,7 @@ export default class TabSystem extends Component {
   render() {
     return (
       <div>
-        <TabSet tabs={this.props.tabs} chosenTab={this.state.chosenTab} handleTabChange={this.handleTabChange}></TabSet>
+        <TabSet tabs={this.props.tabNames} chosenTab={this.state.chosenTab} handleTabChange={this.handleTabChange}></TabSet>
         <ContentSet>
           {this.props.children[this.state.chosenTab]}
         </ContentSet>
@@ -30,5 +30,5 @@ export default class TabSystem extends Component {
 
 TabSystem.propTypes = {
   initialChosenTab: propTypes.number.isRequired,
-  tabs: propTypes.arrayOf(propTypes.string).isRequired,
+  tabNames: propTypes.arrayOf(propTypes.string).isRequired,
 }

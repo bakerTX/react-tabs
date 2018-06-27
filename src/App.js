@@ -5,7 +5,7 @@ import Content from './TabSystem/Content';
 class App extends Component {
   render() {
     return (
-      <TabSystem tabs={['Tab 1', 'Tab 2', 'Tab 3']} initialChosenTab={1}>
+      <TabSystem tabNames={['Tab 1', 'Tab 2', 'Tab 3']} initialChosenTab={1}>
         <Content>
           <h1>Content Set 1!</h1>
           <h3>This is a subdescription</h3>
